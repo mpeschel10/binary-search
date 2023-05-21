@@ -1,0 +1,14 @@
+/Library/
+/Logs/
+/Logs
+/Temp/
+/Obj/
+/Build/
+/Builds/
+/Assets/AssetStoreTools*
+
+*.tmp
+sysinfo.txt
+*.pidb.meta
+*.apk
+# List taken from: https://stackoverflow.com/a/42701935
