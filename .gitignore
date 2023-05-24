@@ -1,6 +1,4 @@
 /Library/
-/Logs/
-/Logs
 /Temp/
 /Obj/
 /Build/
@@ -11,4 +9,6 @@
 sysinfo.txt
 *.pidb.meta
 *.apk
-# List taken from: https://stackoverflow.com/a/42701935
+# Above entries taken from, with some modification: https://stackoverflow.com/a/42701935
+
+/Logs/
