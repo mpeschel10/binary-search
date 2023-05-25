@@ -14,6 +14,20 @@ public class PlayerMovement : MonoBehaviour
         rb = GetComponent<Rigidbody>();
     }
 
+    private void Jump()
+    {
+        Vector3 old = rb.velocity;
+        rb.velocity = new Vector3(old.x, jumpVelocity, old.z);
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("EnemyHead"))
+        {
+            Destroy(collision.gameObject.transform.parent.gameObject);
+            Jump();
+        }
+    }
 
 
     void Update()
@@ -25,8 +39,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (Input.GetButtonDown("Jump") && IsGrounded())
         {
-            Vector3 old = rb.velocity;
-            rb.velocity = new Vector3(old.x, jumpVelocity, old.z);
+            Jump();
         }
     }
 
