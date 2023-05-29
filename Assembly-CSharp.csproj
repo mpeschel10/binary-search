@@ -36,14 +36,19 @@
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <ItemGroup>
+     <Compile Include="Assets\Scripts\EndMenu.cs" />
+     <Compile Include="Assets\Scripts\PlayerMovement1.cs" />
+     <Compile Include="Assets\Scripts\PlayerCam.cs" />
      <Compile Include="Assets\Scripts\ItemCollector.cs" />
      <Compile Include="Assets\Scripts\PlayerLife.cs" />
      <Compile Include="Assets\Scripts\PlayerMovement.cs" />
+     <Compile Include="Assets\Scripts\StartMenu.cs" />
      <Compile Include="Assets\Scripts\CoinRotate.cs" />
+     <Compile Include="Assets\Scripts\CameraFollowsPlayer.cs" />
      <Compile Include="Assets\Scripts\StickyPlatform.cs" />
      <Compile Include="Assets\Scripts\WaypointFollower.cs" />
-     <Compile Include="Assets\Scripts\StartMenu.cs" />
-     <Compile Include="Assets\Scripts\EndMenu.cs" />
+     <Compile Include="Assets\Scripts\CameraSelector.cs" />
+     <None Include="Assets\OccaSoftware\Crosshairs\Readme.txt" />
     <Reference Include="UnityEngine">
         <HintPath>C:\Program Files\Unity\Hub\Editor\2021.3.25f1\Editor\Data\Managed\UnityEngine\UnityEngine.dll</HintPath>
     </Reference>
