@@ -8,7 +8,6 @@ public class HiddenTile : MonoBehaviour
     int defaultLayer = 0;
     public void click()
     {
-        GetComponent<Renderer>().material.color = clickColor;
         gameObject.layer = defaultLayer;
     }
 
