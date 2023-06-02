@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class CameraSelector : MonoBehaviour
 {
+    public interface Hoverable {
+        public void Hover(); public void Unhover();
+        public GameObject GetGameObject(); // Interfaces cannot expose instance fields...
+    }
     public float selectionRange;
     public LayerMask selectableMask;
     Color oldColor;
@@ -17,30 +21,27 @@ public class CameraSelector : MonoBehaviour
         DoClicks(hitInfo);
     }
 
-    GameObject hovering;
+    Hoverable hoverable;
     void DoOutlines(RaycastHit hitInfo)
     {
-        if ((hovering == null && hitInfo.collider == null) ||
-            (hitInfo.collider != null && hovering != null && hitInfo.collider.gameObject == hovering))
+        if ((hoverable == null && hitInfo.collider == null) ||
+            (hitInfo.collider != null && hoverable != null && hitInfo.collider.gameObject == hoverable.GetGameObject()))
             return; // Nothing has changed, so don't flip-flop the outline.
 
-        if (hovering != null)
+        if (hoverable != null)
         {
-            hovering.GetComponent<HiddenTile>().Unhover();
-            hovering = null;
+            hoverable.Unhover();
+            hoverable = null;
         }
 
         if (hitInfo.collider != null)
         {
-            GameObject gameObject = hitInfo.collider.gameObject;
-            if (gameObject.TryGetComponent(out HiddenTile hiddenTile))
+            if (hitInfo.collider.gameObject.TryGetComponent(out hoverable))
             {
-                hiddenTile.Hover();
-            } else {
-                Debug.LogError("gameObject " + hitInfo.collider.gameObject + " on selectable layer has no hoverable component e.g. HiddenTile.");
-                return;
+                hoverable.Hover();
+            } else  {
+                Debug.LogError("gameObject " + hitInfo.collider.gameObject + " on selectable layer has no Hoverable");
             }
-            hovering = gameObject;
         }
     }
 

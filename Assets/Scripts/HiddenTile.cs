@@ -2,9 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HiddenTile : MonoBehaviour
+public class HiddenTile : MonoBehaviour, CameraSelector.Hoverable
 {
-    Color clickColor = new Color(0.5f, 0.5f, 0f);
     int defaultLayer = 0;
     public void Click()
     {
@@ -16,9 +15,12 @@ public class HiddenTile : MonoBehaviour
     {
         gameObject.GetComponent<Outline>().AddLayer("can-click");
     }
-
     public void Unhover()
     {
         gameObject.GetComponent<Outline>().SubtractLayer("can-click");
+    }
+    public GameObject GetGameObject()
+    {
+        return gameObject;
     }
 }
