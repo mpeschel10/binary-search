@@ -36,14 +36,14 @@
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <ItemGroup>
+     <Compile Include="Assets\QuickOutline\Scripts\Outline.cs" />
      <Compile Include="Assets\Scripts\EndMenu.cs" />
+     <Compile Include="Assets\Scripts\OutlineLayerColors.cs" />
      <Compile Include="Assets\Scripts\PlayerMovement1.cs" />
      <Compile Include="Assets\Scripts\PlayerCam.cs" />
      <Compile Include="Assets\Scripts\ItemCollector.cs" />
      <Compile Include="Assets\Scripts\PlayerLife.cs" />
      <Compile Include="Assets\Scripts\PlayerMovement.cs" />
-     <Compile Include="Assets\Scripts\Clickable.cs" />
-     <Compile Include="Assets\Scripts\Draggable.cs" />
      <Compile Include="Assets\Scripts\StartMenu.cs" />
      <Compile Include="Assets\Scripts\CameraSelector.cs" />
      <Compile Include="Assets\Scripts\CoinRotate.cs" />
@@ -52,8 +52,6 @@
      <Compile Include="Assets\Scripts\StickyPlatform.cs" />
      <Compile Include="Assets\Scripts\WaypointFollower.cs" />
      <Compile Include="Assets\Scripts\HiddenTile.cs" />
-     <Compile Include="Assets\QuickOutline\Scripts\Outline.cs" />
-     <Compile Include="Assets\Scripts\OutlineLayerColors.cs" />
      <None Include="Assets\QuickOutline\Resources\Shaders\OutlineMask.shader" />
      <None Include="Assets\QuickOutline\Readme.txt" />
      <None Include="Assets\OccaSoftware\Crosshairs\Readme.txt" />

@@ -9,6 +9,7 @@ public class HiddenTile : MonoBehaviour
     public void click()
     {
         gameObject.layer = defaultLayer;
+        gameObject.GetComponent<Outline>().AddLayer("clicked");
     }
 
 }

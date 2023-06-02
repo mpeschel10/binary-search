@@ -162,13 +162,11 @@ public class Outline : MonoBehaviour {
     {
       if (layerCounts[i] > 0)
       {
-        this.OutlineColor = layerColors.array[i].color;
         this.enabled = true;
-        Debug.Log("Enabled for layer " + i);
+        this.OutlineColor = layerColors.array[i].color;
         return;
       }
     }
-    Debug.Log("Disabled lol");
     this.enabled = false;
   }
 
