@@ -17,29 +17,30 @@ public class CameraSelector : MonoBehaviour
         DoClicks(hitInfo);
     }
 
-    Outline outline;
+    GameObject hovering;
     void DoOutlines(RaycastHit hitInfo)
     {
-        if ((outline == null && hitInfo.collider == null) ||
-            (hitInfo.collider != null && outline != null && hitInfo.collider.gameObject == outline.gameObject))
-            // Nothing has changed, so don't flip-flop the outline.
-            return;
+        if ((hovering == null && hitInfo.collider == null) ||
+            (hitInfo.collider != null && hovering != null && hitInfo.collider.gameObject == hovering))
+            return; // Nothing has changed, so don't flip-flop the outline.
 
-        if (outline != null)
+        if (hovering != null)
         {
-            outline.SubtractLayer("can-click");
-            outline = null;
+            hovering.GetComponent<HiddenTile>().Unhover();
+            hovering = null;
         }
 
         if (hitInfo.collider != null)
         {
-            outline = hitInfo.collider.gameObject.GetComponent<Outline>();
-            if (outline == null)
+            GameObject gameObject = hitInfo.collider.gameObject;
+            if (gameObject.TryGetComponent(out HiddenTile hiddenTile))
             {
-                Debug.LogError("gameObject " + hitInfo.collider.gameObject + " on selectable layer has no Outline component.");
+                hiddenTile.Hover();
+            } else {
+                Debug.LogError("gameObject " + hitInfo.collider.gameObject + " on selectable layer has no hoverable component e.g. HiddenTile.");
                 return;
             }
-            outline.AddLayer("can-click");
+            hovering = gameObject;
         }
     }
 
@@ -50,7 +51,7 @@ public class CameraSelector : MonoBehaviour
             GameObject gameObject = hitInfo.collider.gameObject;
             if (gameObject.TryGetComponent(out HiddenTile hiddenTile))
             {
-                hiddenTile.click();
+                hiddenTile.Click();
             } else {
                 Debug.LogError("gameObject " + hitInfo.collider.gameObject + " on selectable layer has no clickable component e.g. HiddenTile.");
                 return;

@@ -48,7 +48,6 @@
      <Compile Include="Assets\Scripts\CameraSelector.cs" />
      <Compile Include="Assets\Scripts\CoinRotate.cs" />
      <Compile Include="Assets\Scripts\CameraFollowsPlayer.cs" />
-     <Compile Include="Assets\Scripts\POVInteract.cs" />
      <Compile Include="Assets\Scripts\StickyPlatform.cs" />
      <Compile Include="Assets\Scripts\WaypointFollower.cs" />
      <Compile Include="Assets\Scripts\HiddenTile.cs" />
