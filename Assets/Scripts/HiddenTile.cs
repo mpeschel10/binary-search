@@ -1,14 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class HiddenTile : MonoBehaviour, CameraSelector.Hoverable
 {
     int defaultLayer = 0;
+    TMP_Text face;
+    [SerializeField] string hiddenText;
+
+    void Start()
+    {
+        face = GetComponentInChildren<TMP_Text>();
+    }
     public void Click()
     {
         gameObject.layer = defaultLayer;
-        gameObject.GetComponent<Outline>().AddLayer("clicked");
+        face.text = hiddenText;
     }
 
     public void Hover()

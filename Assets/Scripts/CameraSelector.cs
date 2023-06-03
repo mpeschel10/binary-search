@@ -8,10 +8,17 @@ public class CameraSelector : MonoBehaviour
         public void Hover(); public void Unhover();
         public GameObject GetGameObject(); // Interfaces cannot expose instance fields...
     }
+
+    public interface Draggable {
+        public void Grab(Transform transform); public void Ungrab();
+    }
+    
     public float selectionRange;
     public LayerMask selectableMask;
     Color oldColor;
     public Color selectedColor;
+
+    [SerializeField] private Transform grabTransform;
 
     void Update()
     {
@@ -19,6 +26,7 @@ public class CameraSelector : MonoBehaviour
         
         DoOutlines(hitInfo);
         DoClicks(hitInfo);
+        DoDrags(hitInfo);
     }
 
     Hoverable hoverable;
@@ -54,9 +62,32 @@ public class CameraSelector : MonoBehaviour
             {
                 hiddenTile.Click();
             } else {
-                Debug.LogError("gameObject " + hitInfo.collider.gameObject + " on selectable layer has no clickable component e.g. HiddenTile.");
                 return;
             }
+        }
+    }
+
+    Draggable dragging;
+    void DoDrags(RaycastHit hitInfo)
+    {
+        if (hitInfo.collider != null && Input.GetMouseButtonDown(1))
+        {
+            if (dragging != null) // We missed a GetMouseButtonUp() somewhere; normalize.
+            {
+                dragging.Ungrab();
+            }
+            dragging = hitInfo.collider.gameObject.GetComponentInParent<Draggable>();
+            if (dragging != null)
+            {
+                Debug.Log("Grabbed");
+                grabTransform.position = hitInfo.point;
+                dragging.Grab(grabTransform);
+            }
+        }
+        if (dragging != null && Input.GetMouseButtonUp(1))
+        {
+            dragging.Ungrab();
+            dragging = null;
         }
     }
 }
