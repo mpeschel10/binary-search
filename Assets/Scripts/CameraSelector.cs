@@ -75,6 +75,7 @@ public class CameraSelector : MonoBehaviour
             if (dragging != null) // We missed a GetMouseButtonUp() somewhere; normalize.
             {
                 dragging.Ungrab();
+                dragging = null;
             }
             dragging = hitInfo.collider.gameObject.GetComponentInParent<Draggable>();
             if (dragging != null)

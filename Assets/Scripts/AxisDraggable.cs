@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AxisDraggable : MonoBehaviour, CameraSelector.Hoverable, CameraSelector.Draggable
+public class AxisDraggable : MonoBehaviour, CameraSelector.Draggable
 {
     public float dragSpeed = 10f;
 
@@ -17,10 +17,6 @@ public class AxisDraggable : MonoBehaviour, CameraSelector.Hoverable, CameraSele
             throw new System.Exception("AxisDraggable could not find rigidbody attached to component " + gameObject + ". Probably add that component?");
         }
     }
-    public GameObject GetGameObject() { return gameObject; }
-    public void Hover() { GetComponent<Outline>().AddLayer("can-drag"); }
-    public void Unhover() { GetComponent<Outline>().SubtractLayer("can-drag"); }
-
     public void Grab(Transform grabTransform)
     {
         this.grabTransform = grabTransform;
