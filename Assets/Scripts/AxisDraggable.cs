@@ -28,7 +28,7 @@ public class AxisDraggable : MonoBehaviour, CameraSelector.Draggable
         this.grabTransform = null;
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         if (grabTransform != null)
         {

@@ -7,7 +7,7 @@ public class HiddenTile : MonoBehaviour, CameraSelector.Hoverable
 {
     int defaultLayer = 0;
     TMP_Text face;
-    [SerializeField] string hiddenText;
+    public string hiddenText;
     SearchScore searchScore;
 
     void Start()
