@@ -27,7 +27,7 @@ public class DuplicateHiddenTile : MonoBehaviour
             {
                 if (text.name == "TileFace")
                 {
-                    text.text = letters[i].ToString();   
+                    text.text = " ";//letters[i].ToString();   
                 } else { // text.name == "TileIndex"
                     text.text = i.ToString();
                 }
